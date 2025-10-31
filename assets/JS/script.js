@@ -6,6 +6,15 @@ const scoreElement = document.getElementById("score");
 const gameoverElement = document.getElementById("kata");
 const click = document.getElementById("click");
 
+// === AUDIO === //
+const eatSound = new Audio("/assets/sounds/Eat.mp3");
+const gameOverSound = new Audio("/assets/sounds/Hit.mp3");
+const bgMusic = new Audio("../assets/sounds/bgMusic.mp3");
+
+// Loop background music
+bgMusic.loop = true;
+bgMusic.volume = 0.3; // volumenya jangan terlalu keras
+bgMusic.play();
 
 // === ukuran grid untuk permainan ular === //
 // === grid adalah tata letak dari map ular === //
@@ -24,7 +33,7 @@ let gameRunning = true;
 
 function drawSnake() {
   // Bersihkan Canvas
-  ctx.fillStyle = "lightgreen";
+  ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   // Gambar Ular
   ctx.fillStyle = "darkgreen";
@@ -73,6 +82,8 @@ function update() {
   if (head.x === food.x && head.y === food.y) {
     score += 10;
     scoreElement.innerHTML = score;
+    eatSound.currentTime = 0; 
+    eatSound.play();
     generateFood();
   } else {
     snake.pop();
@@ -88,6 +99,8 @@ function generateFood() {
 
 function endGame() {
     gameRunning = false;
+    gameOverSound.play();  
+    bgMusic.pause();      
     gameoverElement.style.display = 'block';
     kata.innerHTML = "Game Over! Your Score : " + score;
     click.style.display = 'block';
@@ -100,8 +113,11 @@ function resetGame() {
     scoreElement.innerHTML = score;
     gameRunning = true;
     generateFood();
-    // gameoverElement.style.display = 'none';
-    // click.style.display = 'none';
+    gameoverElement.style.display = 'none';
+    click.style.display = 'none';
+    
+    bgMusic.currentTime = 0; 
+    bgMusic.play();
 }
 
 function gameLoop() {
