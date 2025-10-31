@@ -7,13 +7,23 @@
 /* Mendekor Body Secara keseluruhan */
 body {
     text-align: center;
-    background-color: #000000;
+    background-color: #145115;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     margin: 0;
     padding: 20px;
+    background-image: url("../img/wallpaper.jpeg");
 }
 
+h1 {
+    color: white;
+    margin-bottom: 10px;
+    background-color: #145115;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 30px;
+    margin-left: auto;
+}
 
 /* Warna untuk teks jika ular menabrak sesuatu */
 #kata {
@@ -23,8 +33,7 @@ body {
 
 /* mendekorasi canvas */
 canvas {
-    border-radius: 10px;
-    border: 2px solid rgb(0, 255, 128);
+    border: 2px solid rgb(200, 196, 196);
     box-shadow: 3px 3px 2px;
 }
 
@@ -33,7 +42,8 @@ button {
     font-size: large;
     padding: 7px 14px;
     border-radius: 5px;
-    background-color: rgb(0, 197, 33);
+    border: none;
+    background-color: rgb(60, 191, 20);
     color: white;
     cursor: pointer;
 }
@@ -61,8 +71,4 @@ p {
 #score {
     color: rgb(4, 209, 4);
     
-}
-
-.judul {
-    padding-bottom: 10px ;
 }
